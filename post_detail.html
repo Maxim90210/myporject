@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>Автор: {{ post.author }}</p>
+    <p>Опубліковано: {{ post.created_at }}</p>
+    <div>
+        {{ post.content }}
+    </div>
+    <a href="{% url 'blog:post_list' %}">Повернутися до списку</a>
+</body>
+</html>

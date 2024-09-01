@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p>Опис: {{ product.description }}</p>
+    <p>Ціна: {{ product.price }} грн</p>
+    {% if product.available %}
+        <p>В наявності</p>
+    {% else %}
+        <p>Немає в наявності</p>
+    {% endif %}
+    <a href="{% url 'shop:product_list' %}">Повернутися до списку товарів</a>
+</body>
+</html>
