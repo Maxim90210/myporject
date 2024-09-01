@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Parcel
 
-def product_list(request):
-    products = Product.objects.filter(available=True)
-    return render(request, 'shop/product_list.html', {'products': products})
+def parcel_list(request):
+    parcels = Parcel.objects.all()
+    return render(request, 'parcel/parcel_list.html', {'parcels': parcels})
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, 'shop/product_detail.html', {'product': product})
+def receive_parcel(request, pk):
+    parcel = get_object_or_404(Parcel, pk=pk)
+    parcel.status = 'Received'
+    parcel.received_at = timezone.now()
+    parcel.save()
+    return render(request, 'parcel/parcel_detail.html', {'parcel': parcel})
